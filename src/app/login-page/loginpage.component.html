@@ -1,17 +1,37 @@
-<div class="d-flex flex-column justify-content-center">
-    <form [formGroup]="loginForm">
-        <div class="container ">
-            <label>Email address</label>
-            <input type="email" formControlName="username" id="username" placeholder="email@example.com">
+<form [formGroup]="loginForm">
+    <div class="card">
+        <div class="card-body">
+            <fieldset>
+
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="userNameId">UserName*</label>
+                    <div class="col-md-8">
+                        <input type="email" formControlName="username" id="username" placeholder="email@example.com" />
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form--label" for="passwordId">Password*</label>
+                    <div class="col-md-8">
+                        <input type="password" formControlName="password" id="password" placeholder="Password" />
+                    </div>
+                    <span *ngIf="!isUserExist">email address or password is incorrect</span>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <span>
+                        <button class="btn btn-primary" type="submit" (click)="verify()" [disabled]="! loginForm.valid">
+                            Log In
+                        </button>
+                    </span>
+                    &nbsp;
+                    <span>
+                        <button class="btn btn-outline-secondary " type="button" (click)="signin()">
+                            Register
+                        </button>
+                    </span>
+                </div>
+            </fieldset>
         </div>
-        <div class="container">
-            <label>Password</label>
-            <input type="password" formControlName="password" id="password" placeholder="Password">
-            <span *ngIf="!isUserExist">email address or password is incorrect</span>
-        </div>
-        <div>
-            <button type="button" class="btn btn-primary" (click)="verify()" [disabled]="! loginForm.valid">Login</button>
-            <button type="button" class="btn btn-primary" (click)="signin()">Register</button>
-        </div>
-    </form>
-</div>
+    </div>
+</form>
