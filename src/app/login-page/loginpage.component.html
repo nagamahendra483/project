@@ -1,0 +1,17 @@
+<div class="d-flex flex-column justify-content-center">
+    <form [formGroup]="loginForm">
+        <div class="container ">
+            <label>Email address</label>
+            <input type="email" formControlName="username" id="username" placeholder="email@example.com">
+        </div>
+        <div class="container">
+            <label>Password</label>
+            <input type="password" formControlName="password" id="password" placeholder="Password">
+            <span *ngIf="!isUserExist">email address or password is incorrect</span>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary" (click)="verify()" [disabled]="! loginForm.valid">Login</button>
+            <button type="button" class="btn btn-primary" (click)="signin()">Register</button>
+        </div>
+    </form>
+</div>
